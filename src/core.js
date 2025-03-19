@@ -91,6 +91,9 @@ export async function handleWebhook(request, ownerUid, botToken, secretToken) {
             const rm = reply.reply_markup;
             if (rm && rm.inline_keyboard && rm.inline_keyboard.length > 0) {
                 let senderUid = rm.inline_keyboard[0][0].callback_data;
+                if (rm.inline_keyboard.length > 1) {
+                    senderUid = rm.inline_keyboard[1][0].callback_data;
+                }
                 if (!senderUid) {
                     senderUid = rm.inline_keyboard[0][0].url.split('tg://user?id=')[1];
                 }
@@ -112,6 +115,9 @@ export async function handleWebhook(request, ownerUid, botToken, secretToken) {
         const sender = message.chat;
         const senderUid = sender.id.toString();
         const senderName = sender.username ? `@${sender.username}` : [sender.first_name, sender.last_name].filter(Boolean).join(' ');
+        const isGroup = sender.type === 'group' || sender.type === 'supergroup';
+        const groupId = isGroup ? sender.id.toString() : null;
+        const groupName = isGroup ? sender.title : null;
 
         const copyMessage = async function (withUrl = false) {
             const ik = [[{
@@ -123,6 +129,13 @@ export async function handleWebhook(request, ownerUid, botToken, secretToken) {
                 ik[0][0].text = `🔓 From: ${senderName} (${senderUid})`
                 ik[0][0].url = `tg://user?id=${senderUid}`;
             }
+            if (isGroup) {
+                ik.push([{
+                    text: `👥 Group: ${groupName} (${groupId})`,
+                    callback_data: groupId,
+                }]);
+            }
+
 
             return await postToTelegramApi(botToken, 'copyMessage', {
                 chat_id: parseInt(ownerUid),
