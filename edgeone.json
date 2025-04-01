@@ -1,0 +1,7 @@
+{
+    "name": "open-wegram-bot",
+    "buildCommand": "rm -f package-lock.json",
+    "installCommand": "echo 'no install'",
+    "outputDirectory": "./",
+    "nodeVersion": "22.11.0"
+}
