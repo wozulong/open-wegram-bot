@@ -1,0 +1,5 @@
+{
+  "deploy": {
+    "entrypoint": "deno/server.js"
+  }
+}
