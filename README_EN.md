@@ -121,6 +121,45 @@ If you prefer not to use GitHub or command-line tools, you can create the Worker
    - `PREFIX` (e.g., `public`)
    - `SECRET_TOKEN` (must contain uppercase and lowercase letters and numbers, at least 16 characters long)
 
+#### Method 5: Deno One-Click Deployment
+
+Deno provides another simple deployment method, which also supports automatic deployment from GitHub repositories.
+
+1. Fork this repository to your GitHub account
+2. Log in to [Deno Deploy](https://dash.deno.com) and click **New Project**
+3. Select your authorized GitHub account and choose your forked repository
+4. Under **Project Configuration** -> **Entrypoint**, select `deno/server.js`
+5. Click the **Deploy Project** button and wait for the deployment to complete
+6. Click the **Add environment variables** button at the bottom of the page to add environment variables:
+   - `PREFIX`: URL prefix, for example `public`
+   - `SECRET_TOKEN`: Encryption token, must include uppercase and lowercase letters and numbers, with a minimum length of 16 characters
+7. After clicking the **Save (2 new)** button to save the environment variables, the deployment is complete. The domain name provided by Deno is above the environment variables, such as `project-name.deno.dev`
+
+#### Method 6: Netlify One-Click Deployment
+
+Netlify provides another simple deployment method, which also supports automatic deployment from GitHub repositories.
+
+1. Fork this repository to your GitHub account
+2. Log in to [Netlify](https://app.netlify.com/) and click **Add new site** -> **Add new site** -> **Import an existing project**
+3. Select your authorized GitHub account and choose your forked repository
+4. Fill in the **Site name** and add environment variables:
+   - Click **Add environment variables** -> **Add key/value pairs**
+   - `NETLIFY_PREFIX`: URL prefix, for example `public`
+   - `SECRET_TOKEN`: Encryption token, must include uppercase and lowercase letters and numbers, with a minimum length of 16 characters
+5. Click the **Deploy xxx** button, and after the deployment is complete, you can see the Netlify-provided domain name under the site name, such as `site-name.netlify.app`
+
+#### Method 7: EdgeOne One-Click Deployment
+
+EdgeOne provides another simple deployment method, which also supports automatic deployment from GitHub repositories.
+
+1. Fork this repository to your GitHub account
+2. Log in to [EdgeOne Pages](https://edgeone.ai/login?s_url=https://console.tencentcloud.com/edgeone/pages) and click **Create Project** -> **Import Git Repository**
+3. Select the authorized GitHub account and choose your forked repository
+4. Add environment variables:
+- `EDGEONE_PREFIX`: URL prefix, for example `public`
+- `SECRET_TOKEN`: Encryption token, must include uppercase and lowercase letters and numbers, with a minimum length of 16 characters
+5. Click the **Start Deployment** button, and after the deployment is complete, go to **Project Settings** -> **Domain Management** to add a custom domain. The default domain `project-name.edgeone.app` only supports preview, and its validity period is only 3 hours!
+
 ### 3.1 (Optional) Bind a Custom Domain 🌐
 
 > [!TIP]
@@ -141,6 +180,9 @@ After deploying the Worker, you'll get a URL like:
 - GitHub integration: `https://your-project-name.username.workers.dev`
 - Vercel deployment: `https://your-project.vercel.app`
 - Wrangler/Dashboard: `https://your-worker-name.your-subdomain.workers.dev`
+- Deno deployment: `https://project-name.deno.dev`
+- Netlify deployment: `https://site-name.netlify.app`
+- EdgeOne deployment: `https://your.custom.domain`
 
 Now you need to register your Bot:
 

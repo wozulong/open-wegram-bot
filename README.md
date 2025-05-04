@@ -122,6 +122,46 @@ Vercel 部署的优点是简单快速，支持自动更新，并且默认提供 
    - `PREFIX`（例如：`public`）
    - `SECRET_TOKEN`（必须包含大小写字母和数字，长度至少16位）
 
+#### 方法五：Deno 一键部署
+
+Deno 提供了另一种简单的部署方式，也支持从 GitHub 仓库自动部署。
+
+1. Fork 本仓库到您的 GitHub 账户
+2. 登录 [Deno Deploy](https://dash.deno.com) 并点击 **New Project**
+3. 选择已授权的 GitHub 账户并选择您的 Fork 仓库
+4. 在 **Project Configuration** -> **Entrypoint** 下选择 `deno/server.js`
+5. 点击 **Deploy Project** 按钮，等待部署完成
+6. 点击页面底部 **Add environment variables** 按钮，添加环境变量：
+   - `PREFIX`：URL前缀，例如 `public`
+   - `SECRET_TOKEN`：加密令牌，必须包含大小写字母和数字，长度至少16位
+7. 点击 **Save (2 new)** 按钮保存环境变量后即完成部署，环境变量上方即为 Deno 提供的域名，如 `project-name.deno.dev`
+
+#### 方法六：Netlify 一键部署
+
+Netlify 提供了另一种简单的部署方式，也支持从 GitHub 仓库自动部署。
+
+1. Fork 本仓库到您的 GitHub 账户
+2. 登录 [Netlify](https://app.netlify.com/) 并点击 **Add new site** -> **Add new site
+Import an existing project**
+3. 选择已授权的 GitHub 账户并选择您的 Fork 仓库
+4. 填写 **Site name** 并添加环境变量：
+   - 点击 **Add environment variables** -> **Add key/value pairs**
+   - `NETLIFY_PREFIX`：URL前缀，例如 `public`
+   - `SECRET_TOKEN`：加密令牌，必须包含大小写字母和数字，长度至少16位
+5. 点击 **Deploy xxx** 按钮，部署完成后即可在站点名称下看到 Netlify 提供的域名，如 `site-name.netlify.app`
+
+#### 方法七：EdgeOne 一键部署
+
+EdgeOne 提供了另一种简单的部署方式，也支持从 GitHub 仓库自动部署。
+
+1. Fork 本仓库到您的 GitHub 账户
+2. 登录 [EdgeOne Pages](https://edgeone.ai/login?s_url=https://console.tencentcloud.com/edgeone/pages) 并点击 **创建项目** -> **导入 Git 仓库**
+3. 选择已授权的 GitHub 账户并选择您的 Fork 仓库
+4. 添加环境变量：
+   - `EDGEONE_PREFIX`：URL前缀，例如 `public`
+   - `SECRET_TOKEN`：加密令牌，必须包含大小写字母和数字，长度至少16位
+5. 点击 **开始部署** 按钮，部署完成后转到 **项目设置** -> **域名管理** 添加自定义域名，默认域名 `project-name.edgeone.app` 只支持预览，有效期仅 3 个小时！
+
 ### 3.1 (可选) 绑定自定义域名 🌐
 
 > [!TIP]
@@ -142,6 +182,9 @@ Cloudflare 允许您将自己的域名绑定到 Worker 上，这样您就可以�
 - GitHub 集成：`https://your-project-name.username.workers.dev`
 - Vercel 部署：`https://your-project.vercel.app`
 - Wrangler/Dashboard：`https://your-worker-name.your-subdomain.workers.dev`
+- Deno 部署：`https://project-name.deno.dev`
+- Netlify 部署：`https://site-name.netlify.app`
+- EdgeOne 部署：`https://your.custom.domain`
 
 现在您需要注册您的 Bot：
 
