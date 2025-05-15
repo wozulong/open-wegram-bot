@@ -271,3 +271,7 @@ https://your-worker-url/YOUR_PREFIX/uninstall/BOT_API_TOKEN
 ---
 
 希望这个工具能让您的 Telegram 私聊体验更加便捷！🎉 如果你只想直接使用，请访问 [@WegramBot](https://t.me/wegram_bot)
+
+### Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=wozulong/open-wegram-bot&type=Date)](https://star-history.com/#wozulong/open-wegram-bot&Date)   
